@@ -37,7 +37,7 @@ Memorywise you are up to about 1 megabytes of allocations on the heap for the tw
 At 1 000 000 you will feel the pain. What took over 1.5 minutes for the two first methods, and allocated some 1 TB (!!!) of memory on the heap, took only 2 milliseconds and needed only 4 megabytes on the heap.
 
 
-## Actual benchmark output
+## Actual benchmark output  
 
 
 |               Method |    Size |                Mean |               Error |            StdDev |       Allocated |
