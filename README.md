@@ -28,13 +28,19 @@ Actually it only allocates the string when you call the GetString() method on it
 ## Results you say?
 
 Of course, the benchmarks were run with three different values for how many x:es should be appended to she string.
-100, 1 000 and 1 000 000.
+100, 1 000 and 1 000 000.  
+### 100  
+
 At 100 you would not notice the difference if you just ran the code in your program.  
 The StringBuilder way is one microsecond faster (which makes it three times faster) than the other two at this point, and allocates about 10 kilobytes less on the heap, but you will not notice this without measuring it with tools.  
-  
+
+### 1 000  
+
 At 1 000 you'll probably not notice much of a difference either. 
 The StringBuilder way is now roughly 35 times faster. But you see when we benchmark it, that it is starting to scale quite fast.
 Memorywise you are up to about 1 megabytes of allocations on the heap for the two first methods, and roughly 4 kilobytes for the StringBuilder one.
+
+### 1 000 000  
 
 At 1 000 000 you will feel the pain! What took over 1.5 minutes for the two first methods, and allocated some 1 TB (!!!) of memory on the heap, took only 2 milliseconds and needed only 4 megabytes on the heap. *  
 And yes, I'm aware that you would seldom concatenate one million of the same characters into one string, and yes the size of that string is the cause of the enormous allocations on the heap. But it's a good reminder to be careful with resources if you can, and this one is very easy to fix.
