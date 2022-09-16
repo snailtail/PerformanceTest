@@ -35,7 +35,7 @@ At 1 000 you still probably will not notice much of a difference. The StringBuil
 Memorywise you are up to about 1 megabytes of allocations on the heap for the two first methods, and roughly 4 kb for the third one.
 
 At 1 000 000 you will feel the pain. What took over 1.5 minutes for the two first methods, and allocated some 1 TB (!!!) of memory on the heap, took only 2 milliseconds and needed only 4 megabytes on the heap.
-
+And yes, I'm aware that you would seldom concatenate one million of the same characters into one string, and yes the size of that string is the cause of the enormous allocations on the heap. But it's a good reminder to be careful with resources if you can, and this one is very easy to fix.
 
 ## Actual benchmark output  
 
@@ -51,3 +51,8 @@ At 1 000 000 you will feel the pain. What took over 1.5 minutes for the two firs
 |          add_strings | 1000000 | 96,332,038,304.5 ns | 1,039,946,892.65 ns | 868,402,754.79 ns | 1000137110168 B |
 | interpolated_strings | 1000000 | 95,706,342,774.9 ns |   217,939,211.61 ns | 203,860,473.76 ns | 1000136138040 B |
 |  using_stringbuilder | 1000000 |      2,708,669.1 ns |        21,950.41 ns |      20,532.42 ns |       4010393 B |
+
+## So?
+
+Well if performance ever might matter, like if resources are limited where your code is running (or cost mucho dineros), you should definitely use the StringBuilder method.
+If not - lucky you! Keep on keepin on. :)  
